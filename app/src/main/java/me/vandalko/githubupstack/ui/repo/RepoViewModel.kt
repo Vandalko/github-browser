@@ -20,7 +20,7 @@ class RepoViewModel: ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val repos = try {
-                    service.repositories(user)
+                    service.repositories()
                 } catch (e: Exception) {
                     Log.e("RepoViewModel", "failed to list repos", e)
                     repositories.value

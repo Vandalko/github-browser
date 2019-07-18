@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface GitHub {
 
@@ -37,6 +38,6 @@ interface GitHub {
     @GET("/user")
     suspend fun user(): LoggedInUser
 
-    @GET("users/{user}/repos")
-    suspend fun repositories(@Path("user") user: String): List<Repo>
+    @GET("user/repos")
+    suspend fun repositories(@Query("type") type: String = "owner"): List<Repo>
 }
